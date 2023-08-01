@@ -1,2 +1,0 @@
-npm install ngx-owl-carousel
-npm install ngx-owl-carousel-o --save

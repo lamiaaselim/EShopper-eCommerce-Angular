@@ -12,6 +12,19 @@ import { ProductsComponent } from './products/products.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { FooterComponent } from './footer/footer.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { ShopComponent } from './shop/shop.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//Sign-up
+import { MatButtonModule } from '@angular/material/button';
+import { MatStepperModule } from '@angular/material/stepper';
+// Nice Scrolling
+
 
 @NgModule({
   declarations: [
@@ -24,12 +37,24 @@ import { FooterComponent } from './footer/footer.component';
     ProductsComponent,
     SubscribeComponent,
     VendorComponent,
-    FooterComponent
+    FooterComponent,
+    CarouselComponent,
+    ShopComponent,
+    ProductDetailsComponent,
+    ShoppingCartComponent,
+    ContactUsComponent,
+    SignUpComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatStepperModule,
+
   ],
+  exports: [MatButtonModule, MatStepperModule],
   providers: [],
   bootstrap: [AppComponent]
 })

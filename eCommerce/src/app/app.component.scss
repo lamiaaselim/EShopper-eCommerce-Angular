@@ -1,0 +1,28 @@
+/* styles.css */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.custom-scrollbar-container {
+  height: 100vh; /* Set the height to fill the entire screen */
+  overflow: auto;
+}
+
+/* Customize the scrollbar appearance */
+.custom-scrollbar-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar-container::-webkit-scrollbar-thumb {
+  background: #d19c97;
+  border-radius: 6px;
+}
+
+.custom-scrollbar-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
