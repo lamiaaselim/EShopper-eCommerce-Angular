@@ -1,2 +1,58 @@
 npm init -y
 npm i express
+npm i morgan
+------------------------------------------------------------------------------------
+**to run server 
+in package.json 
+1- add "start": "nodemon ."
+"scripts": {
+    "start": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+2- "main": "app.js",
+3 - write nodemon in cmd 
+------------------------------------------------------------------------------------
+in folder routes make 
+1- productRouter -- module.exports=router;
+	- Implement CRUD Operation and test in Postman
+2- userRouter  ---  module.exports=router;
+	-Implement CRUD Operation and test in Postman
+------------------------------------------------------------------------------------
+in app.js 
+/* ----------------- in Routes Layer ----------------- */ 
+use route you made in previous example
+server.use(productRouter);
+server.use(userRouter);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
