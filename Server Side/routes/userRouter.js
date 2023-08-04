@@ -4,7 +4,7 @@ const router = express.Router(); // create routes object and return it
 
 
 
-router.route('/user')
+router.route('/ElShopper/api/user')
     .get(
         // here add your authentication layer
         // here add your authorization layer

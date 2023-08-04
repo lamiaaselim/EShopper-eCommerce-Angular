@@ -4,13 +4,13 @@ const router = express.Router(); // create routes object and return it
 
 
 
-router.route('/product')
+router.route('/ElShopper/api/product')
     .get(controller.getAllProduct)
     .post(controller.addProduct)
     .patch(controller.updateProduct)
     // .delete(controller.deleteProduct)
 
-router.route('/product/:id?')
+router.route('/ElShopper/api/product/:id?')
     .get(controller.getProductById)
     .delete(controller.getProductById)
 

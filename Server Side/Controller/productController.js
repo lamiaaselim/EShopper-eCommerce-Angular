@@ -1,22 +1,48 @@
-
+const ProductSchema = require('./../Model/productModel');
 
 exports.getAllProduct=(request, response, next)=>{
-    console.log(request.url)
-    response.status(200).json({data: [{id:1 , name:"ABC"},{id:2 , name:"XXX"}]});
+    ProductSchema.find({})
+        .then((data) => {
+            response.status(200).json(data);
+        }).catch((error) => {
+            next(error)
+        });
 }
- 
+
 exports.getProductById=(request, response, next)=>{
-    response.status(200).json({data: {id:request.params.id}});
+    ProductSchema.findOne({_id:request.params.id})
+        .then((data) => {
+            if (data == null)
+            throw new Error ("Product dosen't exist")
+            response.status(200).json(data);
+        }).catch((error) => {
+            next(error)
+        });
 }
 
 exports.addProduct=(request, response, next)=>{
-    console.log(request.body)
-    response.status(201).json({data: "product added successfully"});
+    let newProduct = new ProductSchema({
+        _id:request.body.id,
+        name:request.body.name,
+    });
+    newProduct.save()
+        .then((data) => {
+            response.status(201).json({data:"data added successfully",newProduct:data });
+        })
+        .catch((error)=>{next(error)});
 }
 
 exports.updateProduct=(request, response, next)=>{
-    console.log(request.body)
-    response.status(200).json({data: "product updated successfully"});
+    ProductSchema.updateOne({
+        _id:request.body.id,
+    },{
+        $set:{name:request.body.name}
+    })
+        .then((data) => {
+            response.status(200).json({data:"product updated successfully"});
+        }).catch((error) => {
+            next(error)
+        });
 }
 
 exports.deleteProduct=(request, response, next)=>{

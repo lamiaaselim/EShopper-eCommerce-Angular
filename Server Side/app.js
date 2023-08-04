@@ -45,6 +45,6 @@ server.use((request, response, next)=>{
 
 // 4 Mw loading -- Error
 server.use((error,request, response, next)=>{
-    response.status(500).json({message: "4 Mw loading -- Error"});
+    response.status(500).json({message: "4 Mw loading -- Error" + error});
     next();
 });

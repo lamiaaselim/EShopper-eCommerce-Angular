@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-const schema = new mongoose.Schema({
-    _id:Number,
+const ProductSchema = new mongoose.Schema({
+    _id:mongoose.Types.ObjectId,
+    // _id:Number,
     name:String,
     rating:Number,
     newPrice:Number,
@@ -12,4 +13,7 @@ const schema = new mongoose.Schema({
     size:Array,
     color:Array,
     quantity:Number,
-})
+});
+
+//Collection
+module.exports=mongoose.model('product', ProductSchema);
