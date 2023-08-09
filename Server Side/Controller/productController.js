@@ -1,5 +1,6 @@
 const ProductSchema = require('./../Model/productModel');
 
+
 exports.getAllProduct=(request, response, next)=>{
     ProductSchema.find({})
         .then((data) => {
@@ -7,7 +8,7 @@ exports.getAllProduct=(request, response, next)=>{
         }).catch((error) => {
             next(error)
         });
-}
+} 
 
 exports.getProductById=(request, response, next)=>{
     ProductSchema.findOne({_id:request.params.id})
@@ -46,6 +47,20 @@ exports.updateProduct=(request, response, next)=>{
 }
 
 exports.deleteProduct=(request, response, next)=>{
-    console.log(request.body)
-    response.status(200).json({data: "product deleted successfully"});
+    const productId = request.params.id; // Assuming the ID is passed as a URL parameter
+
+    ProductSchema.findByIdAndDelete(productId)
+        .then((deletedProduct) => {
+            if (!deletedProduct) {
+                throw new Error("Product not found");
+            }
+            response.status(200).json({ message: "Product deleted successfully" });
+        })
+        .catch((error) => {
+            next(error);
+        });
+
+    // console.log(request.body)
+    // response.status(200).json({data: "product deleted successfully"});
 }
+

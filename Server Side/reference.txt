@@ -1,6 +1,8 @@
 npm init -y
 npm i express
 npm i morgan
+
+
 ------------------------------------------------------------------------------------
 **to run server 
 in package.json 
@@ -11,12 +13,16 @@ in package.json
   },
 2- "main": "app.js",
 3 - write nodemon in cmd 
+
+
 ------------------------------------------------------------------------------------
 in folder routes make 
 1- productRouter -- module.exports=router;
 	- Implement CRUD Operation and test in Postman
 2- userRouter  ---  module.exports=router;
 	-Implement CRUD Operation and test in Postman
+
+
 ------------------------------------------------------------------------------------
 in app.js 
 /* ----------------- in Routes Layer ----------------- */ 
@@ -25,8 +31,8 @@ server.use(productRouter);
 server.use(userRouter);
 
 
-
-
+------------------------------------------------------------------------------------
+using npm i ajv for validation
 
 
 

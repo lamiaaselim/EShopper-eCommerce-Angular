@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const ProductSchema = new mongoose.Schema({
     _id:mongoose.Types.ObjectId,
     // _id:Number,
@@ -13,7 +14,7 @@ const ProductSchema = new mongoose.Schema({
     size:Array,
     color:Array,
     quantity:Number,
-});
+}); 
 
 //Collection
 module.exports=mongoose.model('product', ProductSchema);

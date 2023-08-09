@@ -13,6 +13,11 @@ router.route('/ElShopper/api/user')
         )
     .post(controller.addUsers)
     .patch(controller.updateUsers)
+    
+
+router.route('/ElShopper/api/user/:id?')
+    .get(controller.getUserById)
     .delete(controller.deleteUsers)
+
 
 module.exports=router;
