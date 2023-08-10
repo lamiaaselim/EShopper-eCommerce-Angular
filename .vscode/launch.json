@@ -1,0 +1,38 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "eCommerce",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/eCommerce",
+      "sourceMaps": true,
+      "trace": true
+    },
+    {
+      "name": "Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200",
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "ServerSide",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceRoot}/Server Side/app.js",
+      "restart": true,
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/app/config.env",
+    },
+  ],
+  "compounds": [
+    {
+      "name": "eCommerce + ServerSide",
+      "configurations": ["eCommerce", "ServerSide"]
+    }
+  ]
+}
