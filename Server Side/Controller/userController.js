@@ -2,7 +2,7 @@ const UserSchema = require('./../Model/userModel');
 
 
 exports.getUserById=(request, response, next)=>{
-    UserSchema.findOne({_id:request.params.id})
+    UserSchema.findOne({idUser:request.params.id})
         .then((data) => {
             if (data == null)
             throw new Error ("User dosen't exist")
@@ -24,35 +24,43 @@ exports.getAllUsers=(request, response, next)=>{
 
 exports.addUsers=(request, response, next)=>{
     let newUser = new UserSchema({
-        _id:request.body.id,
+        idUser:request.body.idUser,
         name:request.body.name,
+        phone:request.body.phone,
+        email:request.body.email,
+        password:request.body.password,
+        role:request.body.role,
     });
     newUser.save()
         .then((data) => {
             response.status(201).json({data:"data added successfully",newUser:data });
         })
         .catch((error)=>{next(error)});
-    // response.status(201).json({data: "user added successfully"});
 }
 
-exports.updateUsers=(request, response, next)=>{
-    UserSchema.updateOne({
-        _id:request.body.id,
-    },{
-        $set:{name:request.body.name}
+exports.updateUsers =(request, response, next)=>{
+    UserSchema.findOneAndUpdate(
+        {idUser:request.body.idUser},
+        { $set:{name:request.body.name}},
+        { new: true } // to return the updated document
+    )
+    .then(updatedUser => {
+        if (updatedUser) {
+            response.status(200).json({ message: "User updated successfully" });
+        } else {
+            response.status(404).json({ message: "ID doesn't exist" });
+        }
     })
-        .then((data) => {
-            response.status(200).json({data:"user updated successfully"});
-        }).catch((error) => {
-            next(error)
-        });
-    // response.status(200).json({data: "user updated successfully"});
+    .catch(error => {
+        console.error("Update error: ", error);
+        next(error);
+    });
 }
 
 exports.deleteUsers=(request, response, next)=>{
     const userId = request.params.id; // Assuming the ID is passed as a URL parameter
 
-    UserSchema.findByIdAndDelete(userId)
+    UserSchema.findOneAndDelete({idUser: userId},)
         .then((deletedUSer) => {
             if (!deletedUSer) {
                 throw new Error("User not found");
@@ -62,6 +70,4 @@ exports.deleteUsers=(request, response, next)=>{
         .catch((error) => {
             next(error);
         });
-
-    // response.status(200).json({data: "user deleted successfully"});
 }

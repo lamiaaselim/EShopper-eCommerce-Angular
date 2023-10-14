@@ -2,18 +2,14 @@ const mongoose = require('mongoose');
 
 
 const ProductSchema = new mongoose.Schema({
-    _id:mongoose.Types.ObjectId,
-    // _id:Number,
-    name:String,
-    rating:Number,
-    newPrice:Number,
-    oldPrice:Number,
-    description:String,
-    category:Array,
-    information:String,
-    size:Array,
-    color:Array,
-    quantity:Number,
+    productId: { type: Number, required: true, unique: true },
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true },
+    oldPrice: { type: Number, required: true },
+    category: { type: String, enum: ['men', 'women', 'children'], required: true },
+    colors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Color' }],
+    sizes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Size' }],
 }); 
 
 //Collection

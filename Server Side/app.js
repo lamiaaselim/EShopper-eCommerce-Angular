@@ -2,12 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const productRouter =require('./routes/productRouter');
+const colorRouter =require('./routes/colorRouter');
+const sizeRouter =require('./routes/sizeRouter');
+const stockRouter =require('./routes/stockRouter');
+const reviewRouter = require('./routes/reviewRouter');
+const cartRouter = require('./routes/cartRouter');
+const orderRouter = require('./routes/orderRouter');
 const userRouter =require('./routes/userRouter');
 const contactRouter =require('./routes/contactRouter');
+
 const server = express();
 const port = process.env.PORT || 8080;
 
-mongoose.connect("mongodb://127.0.0.1:27017/EShopper")
+mongoose.connect("mongodb://127.0.0.1:27017/ElShopper")
     .then(() => {
         console.log("DB connection established")
         server.listen(port, ()=>{
@@ -21,13 +28,18 @@ mongoose.connect("mongodb://127.0.0.1:27017/EShopper")
 // First Mw loading -- login
 server.use((request, response, next)=>{
     console.log(request.url , request.method);
-    // response.status(200).json({message: "Hello, from first Mw loading -- login"});
     next();
 });
 /* -----------------Routes ----------------- */ 
 server.use(express.json());
 
 server.use(productRouter);
+server.use(colorRouter);
+server.use(sizeRouter);
+server.use(stockRouter);
+server.use(reviewRouter);
+server.use(cartRouter);
+server.use(orderRouter);
 server.use(userRouter);
 server.use(contactRouter);
 

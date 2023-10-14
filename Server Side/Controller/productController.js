@@ -1,6 +1,5 @@
 const ProductSchema = require('./../Model/productModel');
 
-
 exports.getAllProduct=(request, response, next)=>{
     ProductSchema.find({})
         .then((data) => {
@@ -11,7 +10,7 @@ exports.getAllProduct=(request, response, next)=>{
 } 
 
 exports.getProductById=(request, response, next)=>{
-    ProductSchema.findOne({_id:request.params.id})
+    ProductSchema.findOne({productId:request.params.id})
         .then((data) => {
             if (data == null)
             throw new Error ("Product dosen't exist")
@@ -23,8 +22,15 @@ exports.getProductById=(request, response, next)=>{
 
 exports.addProduct=(request, response, next)=>{
     let newProduct = new ProductSchema({
-        _id:request.body.id,
+        // _id:request.body.id,
+        productId: request.body.productId ,
         name:request.body.name,
+        description: request.body.description,
+        price: request.body.price,
+        oldPrice: request.body.price,
+        category: request.body.category,
+        colors: request.body.colors, 
+        sizes: request.body.sizes,
     });
     newProduct.save()
         .then((data) => {
@@ -33,23 +39,29 @@ exports.addProduct=(request, response, next)=>{
         .catch((error)=>{next(error)});
 }
 
-exports.updateProduct=(request, response, next)=>{
-    ProductSchema.updateOne({
-        _id:request.body.id,
-    },{
-        $set:{name:request.body.name}
+exports.updateProduct = (request, response, next) => {
+    ProductSchema.findOneAndUpdate(
+        { productId: request.body.productId },
+        { $set: { name: request.body.name } },
+        { new: true } // to return the updated document
+    )
+    .then(updatedProduct => {
+        if (updatedProduct) {
+            response.status(200).json({ message: "Product updated successfully" });
+        } else {
+            response.status(404).json({ message: "ID doesn't exist" });
+        }
     })
-        .then((data) => {
-            response.status(200).json({data:"product updated successfully"});
-        }).catch((error) => {
-            next(error)
-        });
+    .catch(error => {
+        console.error("Update error: ", error);
+        next(error);
+    });
 }
 
-exports.deleteProduct=(request, response, next)=>{
-    const productId = request.params.id; // Assuming the ID is passed as a URL parameter
+exports.deleteProduct = (request, response, next) => {
+    const productId =  request.params.id;  // Assuming the ID is passed as a URL parameter
 
-    ProductSchema.findByIdAndDelete(productId)
+    ProductSchema.findOneAndDelete({productId:productId})
         .then((deletedProduct) => {
             if (!deletedProduct) {
                 throw new Error("Product not found");
@@ -59,8 +71,4 @@ exports.deleteProduct=(request, response, next)=>{
         .catch((error) => {
             next(error);
         });
-
-    // console.log(request.body)
-    // response.status(200).json({data: "product deleted successfully"});
-}
-
+};
