@@ -24,7 +24,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AdminComponent } from './components/dashboard/admin/admin.component';
-// Nice Scrolling
+// HTTP Obsrvsable
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component'
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import { AdminComponent } from './components/dashboard/admin/admin.component';
     ContactUsComponent,
     SignUpComponent,
     LogInComponent,
-    AdminComponent
+    AdminComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { AdminComponent } from './components/dashboard/admin/admin.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatStepperModule,
+    HttpClientModule
 
   ],
   exports: [MatButtonModule, MatStepperModule],

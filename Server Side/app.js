@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors'); // Import the 'cors' module
+const bodyParser = require('body-parser');
 
 const productRouter =require('./routes/productRouter');
 const colorRouter =require('./routes/colorRouter');
@@ -12,6 +14,11 @@ const userRouter =require('./routes/userRouter');
 const contactRouter =require('./routes/contactRouter');
 
 const server = express();
+
+// Enable CORS for all routes (you can configure this as needed)
+server.use(bodyParser.json());
+server.use(cors());
+
 const port = process.env.PORT || 8080;
 
 mongoose.connect("mongodb://127.0.0.1:27017/ElShopper")

@@ -4,7 +4,8 @@ const router = express.Router(); // create routes object and return it
 
 
 router.route('ElShopper/api/contact')
-    .post(express.json(),express.urlencoded,controller.addInfo)
+    .get(controller.getAllContactMsg)
+    .post(controller.addContactInfo)
 
 
 
