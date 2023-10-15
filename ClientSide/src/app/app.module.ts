@@ -30,6 +30,8 @@ import { HomeComponent } from './components/home/home.component'
 // Reactive forms
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { FormsModule } from '@angular/forms';
     SignUpComponent,
     LogInComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
