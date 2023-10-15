@@ -27,7 +27,9 @@ import { AdminComponent } from './components/dashboard/admin/admin.component';
 // HTTP Obsrvsable
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component'
-
+// Reactive forms
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { HomeComponent } from './components/home/home.component'
     BrowserAnimationsModule,
     MatButtonModule,
     MatStepperModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
 
   ],
   exports: [MatButtonModule, MatStepperModule],
