@@ -24,14 +24,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AdminComponent } from './components/dashboard/admin/admin.component';
+import { HomeComponent } from './components/home/home.component'
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NavComponent } from './components/nav/nav.component';
+
 // HTTP Obsrvsable
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './components/home/home.component'
+
 // Reactive forms
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { NavComponent } from './components/nav/nav.component';
+
 
 @NgModule({
   declarations: [

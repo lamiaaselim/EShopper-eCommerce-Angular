@@ -26,6 +26,7 @@ exports.addProduct=(request, response, next)=>{
         productId: request.body.productId ,
         name:request.body.name,
         description: request.body.description,
+        image: request.body.image,
         price: request.body.price,
         oldPrice: request.body.price,
         category: request.body.category,
