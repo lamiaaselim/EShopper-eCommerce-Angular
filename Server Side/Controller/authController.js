@@ -1,5 +1,6 @@
 const UserSchema = require('./../Model/userModel');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.authLogin= async (request, response, next)=>{
     try {
@@ -14,7 +15,10 @@ exports.authLogin= async (request, response, next)=>{
         return response.status(400).send("Password is wrong");
     
     // success login
-    response.status(200).send("Ok success login" )
+    // 1- send token with response 
+    const token = jwt.sign({userId: user._id}, "thisissecretkey")
+        response.header("x-auth-token",token)
+        response.status(200).send(" successful login ")
     } catch(error) {
         next(error)};
 }
