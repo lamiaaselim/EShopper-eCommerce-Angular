@@ -12,6 +12,7 @@ const cartRouter = require('./routes/cartRouter');
 const orderRouter = require('./routes/orderRouter');
 const userRouter =require('./routes/userRouter');
 const contactRouter =require('./routes/contactRouter');
+const authRouter =require('./routes/authRouter');
 
 const server = express();
 
@@ -50,6 +51,7 @@ server.use(orderRouter);
 server.use(userRouter);
 server.use(contactRouter);
 
+server.use(authRouter);
 // Second Mw loading -- authentication
 server.use((request, response, next)=>{
     console.log("Second Mw loading -- authentication");
