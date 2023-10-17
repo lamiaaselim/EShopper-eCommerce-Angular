@@ -1,6 +1,7 @@
 const UserSchema = require('./../Model/userModel');
 const bcrypt = require('bcrypt');
 
+
 exports.getUserById=(request, response, next)=>{
     UserSchema.findOne({idUser:request.params.id})
         .then((data) => {
@@ -22,6 +23,7 @@ exports.getAllUsers=(request, response, next)=>{
     // response.status(200).json({data: [{id:1 , name:"Ahmed"},{id:2 , name:"Salah"}]});
 }
 
+// Registration
 exports.addUsers= async (request, response, next)=>{
     try {
     // check if user already exists
@@ -41,7 +43,10 @@ exports.addUsers= async (request, response, next)=>{
         role:request.body.role,
     });
     const savedUser = await newUser.save();
-    response.status(201).json({data:"data added successfully", user:savedUser })
+    const token = savedUser.generateAuthToken();
+        response.header("x-auth-token",token)
+        response.status(200).send(" successful registration")
+        response.status(201).json({data:"data added successfully", user:savedUser })
     } catch(error) {
         next(error)};
 }

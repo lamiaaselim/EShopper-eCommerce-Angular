@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+const config = require('config')
 
 const UserSchema = new mongoose.Schema({
     idUser: {type: Number, required: true, unique: true},
@@ -8,6 +10,14 @@ const UserSchema = new mongoose.Schema({
     password:{ type: String, required: true },
     role: { type: String, enum: ['user', 'admin'], default: 'user' },
 });
+
+UserSchema.method("generateAuthToken", function(){
+    const token = jwt.sign(
+        {userId: this._id},
+        config.get("jwtsecret"));
+        return token;
+})
+
 
 //Collection
 module.exports=mongoose.model('user', UserSchema);
