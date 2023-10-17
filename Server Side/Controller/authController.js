@@ -1,6 +1,7 @@
 const UserSchema = require('./../Model/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const config = require('config')
 
 exports.authLogin= async (request, response, next)=>{
     try {
@@ -16,7 +17,9 @@ exports.authLogin= async (request, response, next)=>{
     
     // success login
     // 1- send token with response 
-    const token = jwt.sign({userId: user._id}, "thisissecretkey")
+    if(!config.get("jwtsecret"))
+    return response.status(500).send("request cannot be fulfilled")
+    const token = jwt.sign({userId: user._id},config.get("jwtsecret"));
         response.header("x-auth-token",token)
         response.status(200).send(" successful login ")
     } catch(error) {

@@ -56,7 +56,7 @@ server.use(authRouter);
 server.use((request, response, next)=>{
     console.log("Second Mw loading -- authentication");
     next();
-    // next(new Error("Second Mw throw exception error -- not authenticated"));// jumb to error middleware
+    // jumb to error middleware
 });
 
 // 3 Mw loading -- NotFound
