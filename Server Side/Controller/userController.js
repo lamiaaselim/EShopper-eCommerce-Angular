@@ -1,5 +1,5 @@
 const UserSchema = require('./../Model/userModel');
-
+const bcrypt = require('bcrypt');
 
 exports.getUserById=(request, response, next)=>{
     UserSchema.findOne({idUser:request.params.id})
@@ -22,20 +22,28 @@ exports.getAllUsers=(request, response, next)=>{
     // response.status(200).json({data: [{id:1 , name:"Ahmed"},{id:2 , name:"Salah"}]});
 }
 
-exports.addUsers=(request, response, next)=>{
+exports.addUsers= async (request, response, next)=>{
+    try {
+    // check if user already exists
+    let user =await UserSchema.findOne({email:request.body.email}).exec();
+    if (user) {
+        return response.status(400).send("user already exists");
+    }
+    // create new user
+    let saltRound =await bcrypt.genSalt(10);
+    let hashedPassword = await bcrypt.hash(request.body.password, saltRound)
     let newUser = new UserSchema({
         idUser:request.body.idUser,
         name:request.body.name,
         phone:request.body.phone,
         email:request.body.email,
-        password:request.body.password,
+        password:hashedPassword,
         role:request.body.role,
     });
-    newUser.save()
-        .then((data) => {
-            response.status(201).json({data:"data added successfully",newUser:data });
-        })
-        .catch((error)=>{next(error)});
+    const savedUser = await newUser.save();
+    response.status(201).json({data:"data added successfully", user:savedUser })
+    } catch(error) {
+        next(error)};
 }
 
 exports.updateUsers =(request, response, next)=>{

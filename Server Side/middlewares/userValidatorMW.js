@@ -1,8 +1,7 @@
-const { request } = require('express');
-const validate = require('./../Util/productValidator');
+const validator = require('./../Util/userValidator');
 
 module.exports = (request, response, next) => {
-    let valid = validate(request.body)
+    let valid = validator(request.body)
     if(valid) {
         request.valid = 1;
         next();

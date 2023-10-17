@@ -1,17 +1,14 @@
 const express = require('express');
 const controller = require('./../Controller/userController')
 const router = express.Router(); // create routes object and return it
-
+const validator = require('./../middlewares/userValidatorMW');
 
 
 router.route('/ElShopper/api/user')
-    .get(
-        // here add your authentication layer
-        // here add your authorization layer
-        // here add your validation layer
-        controller.getAllUsers
-        )
-    .post(controller.addUsers)
+    .get(controller.getAllUsers)
+    // Authentication user
+    // 1. register the user by post
+    .post( validator,controller.addUsers)
     .patch(controller.updateUsers)
     
 

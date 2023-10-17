@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+// Component
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -20,17 +20,15 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//Sign-up
-import { MatButtonModule } from '@angular/material/button';
-import { MatStepperModule } from '@angular/material/stepper';
 import { AdminComponent } from './components/dashboard/admin/admin.component';
 import { HomeComponent } from './components/home/home.component'
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavComponent } from './components/nav/nav.component';
-
+//Sign-up
+import { MatButtonModule } from '@angular/material/button';
+import { MatStepperModule } from '@angular/material/stepper';
 // HTTP Obsrvsable
 import { HttpClientModule } from '@angular/common/http';
-
 // Reactive forms
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';

@@ -1,27 +1,92 @@
-<mat-horizontal-stepper>
-  <mat-step label="Step 1">
-    <!-- Content for Step 1 -->
-    <p>Step 1 Content</p>
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
+<section class="container text-center mx-auto">
+  <div class="container mx-auto d-flex min-vh-100 py-5">
+  <div class="row  rounded-5 p-5 bg-white shadow box-area justify-content-center algin-item-center">
+    <div class="container col-lg-6 right-box d-flex justify-content-center flex-column">
+        <div class="row algin-item-center">
+            <div class="header-text mb-4">
+                <h1>Hello, Again 🥰</h1>
+                <h5>We are happy to have you back.</h5>
+                <form [formGroup]="SignUpForm">
+                  {{ SignUpForm.value | json}}
+                <div class="input-group mb-1 form-field">
+                    <input [class.is-invalid] = "name?.invalid && name?.touched"
+                        type="text" id="name-input" formControlName="name"
+                        class="form-control form-control-lg bg-light fs-6 form-text"
+                        placeholder="Type yoyr name"/>
+                </div>
+                <div *ngIf="name?.invalid && name?.touched">
+                  <small class="text-danger" *ngIf="name?.errors?.['required']"> Name is required</small>
+                  <small class="text-danger" *ngIf="name?.errors?.['minLength']"> Name must be 3 char at least</small>
+                </div>
 
-  <mat-step label="Step 2">
-    <!-- Content for Step 2 -->
-    <p>Step 2 Content</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
+              <div class="input-group mb-1 form-field">
+                  <input [class.is-invalid] = "phone?.invalid && phone?.touched"
+                      type="text" id="phone-input" formControlName="phone"
+                      class="form-control form-control-lg bg-light fs-6 form-text"
+                      placeholder="Phone"/>
+              </div>
+              <div *ngIf="phone?.invalid && phone?.touched">
+                <small class="text-danger" *ngIf="phone?.errors?.['required']"> Phone is required</small>
+                <small class="text-danger" *ngIf="phone?.errors?.['minLength']"> Phone must be 11 digit at least</small>
+              </div>
 
-  <mat-step label="Step 3">
-    <!-- Content for Step 3 -->
-    <p>Step 3 Content</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
+                <div class="input-group mb-3 form-field">
+                    <input [class.is-invalid] = "email?.invalid && email?.touched"
+                        type="email" id="email-input" formControlName="email"
+                        class="form-control form-control-lg bg-light fs-6 form-text"
+                        placeholder="Email address" />
+                </div>
+                <div *ngIf="email?.invalid && email?.touched">
+                  <small class="text-danger" *ngIf="email?.errors?.['required']"> Email is required</small>
+                  <small class="text-danger" *ngIf="email?.errors?.['pattern']"> Email doesn't match pattern</small>
+                </div>
+
+                <div class="input-group mb-1 form-field">
+                    <input [class.is-invalid] = "password?.invalid && password?.touched"
+                        type="password" id="password-input" formControlName="password"
+                        class="form-control form-control-lg bg-light fs-6 form-text"
+                        placeholder="Password"/>
+                </div>
+                <div *ngIf="password?.invalid && password?.touched">
+                  <small class="text-danger" *ngIf="password?.errors?.['required']"> Password is required</small>
+                  <small class="text-danger" *ngIf="password?.errors?.['minLength']"> Password must be 8 char at least</small>
+                </div>
+
+              <div class="input-group mb-1 form-field">
+                  <input [class.is-invalid] = "confirmPassword?.invalid && confirmPassword?.touched"
+                      type="password" id="confirmPassword-input" formControlName="confirmPassword"
+                      class="form-control form-control-lg bg-light fs-6 form-text"
+                      placeholder="Confirm Password" (focus)="machedPassword()"/>
+              </div>
+              <div *ngIf="confirmPassword?.invalid && confirmPassword?.touched">
+                <small class="text-danger" *ngIf="confirmPassword?.errors?.['required']"> Confirm Password is required</small>
+                <small class="text-danger">{{ machedPassword() }}</small>
+              </div>
+
+                <div class="input-group mb-5 d-flex justify-content-between">
+                    <div class="form-check">
+                        <input type="checkbox" id="formCheck"
+                            class="form-check-input" />
+                        <label for="formCheck" class="form-check-label text-secondary">Remember me</label>
+                    </div>
+                    <div class="forget">
+                        <small><a href="#"> Forget Password?</a></small>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <button class="btn btn-lg w-100 fs-6" id="btn-Login">Login</button>
+                </div>
+              </form>
+                <div class="row">
+                    <small>Don't have an account <a routerLink="../signup">Sign up</a></small>
+                </div>
+                <div class="container text-center text-bg-danger py-3" id="alert" style="visibility: hidden;">
+                    user not found
+                </div>
+            </div>
+        </div>
     </div>
-  </mat-step>
-</mat-horizontal-stepper>
+  </div>
+  </div>
+  </section>
+
