@@ -23,10 +23,8 @@
                       <small class="fas fa-star-half-alt"></small>
                       <small class="far fa-star"></small>
                   </div>
-                  <div  *ngFor="let review of reviews">
-                    <small class="pt-1" *ngIf="review.product === productOfId._id"> {{review.product}}</small>
+                    <small class="pt-1" *ngIf="reviewOfId"> {{reviewOfId.data.length}}</small>
                     <small class="pt-1"> (Reviews)</small>
-                  </div>
               </div>
               <h3 class="font-weight-semi-bold mb-4">{{productOfId.name}}</h3>
               <p class="mb-4">{{productOfId.description}}</p>

@@ -33,11 +33,17 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.productID=this.activatedRoute.snapshot.paramMap.get("id");
 
-
     this.ProductService.getProductById(this.productID).subscribe({
-      next: data => this.productOfId = data,
+      next: data => {
+        this.productOfId = data;
+        // Now that you have the product data, use its _id to fetch reviews
+        this.ReviewService.reviewsForProduct(this.productOfId._id).subscribe({
+          next: reviewData => this.reviewOfId = reviewData,
+          error: err => this.errMsg = err
+        });
+      },
       error: err => this.errMsg = err
-    })
+    });
 
     this.ReviewService.getAllReviews().subscribe({
       next: data => this.reviews = data,
@@ -45,20 +51,17 @@ export class ProductDetailsComponent implements OnInit {
     })
 
 
-    this.ReviewService.getReviewById(this.productOfId._id).subscribe({
-      next: data => this.reviewOfId = data,
-      error: err => this.errMsg = err
-    })
-
-    this.ColorService.getColorById(this.productOfId.colors).subscribe({
+    this.ColorService.getColorById(this.productOfId).subscribe({
       next: data => this.colorOfId = data,
       error: err => this.errMsg = err
     })
 
-    this.SizeService.getSizeById(this.productID).subscribe({
+    this.SizeService.getSizeById(this.productOfId).subscribe({
       next: data => this.sizeOfId = data,
       error: err => this.errMsg = err
     })
 
   }
+
+
 }

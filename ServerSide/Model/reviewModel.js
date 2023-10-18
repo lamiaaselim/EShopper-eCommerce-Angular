@@ -8,7 +8,6 @@ const ReviewSchema = new mongoose.Schema({
     rating: { type: Number, required: true },
     text: { type: String, required: true },
     date: { type: Date, default: Date.now },
-
 });
 
 //Collection

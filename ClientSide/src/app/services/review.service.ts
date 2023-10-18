@@ -19,18 +19,11 @@ export class ReviewService {
     }))
   }
 
-  getReviewById (id: number):Observable<IReview[]>
+  reviewsForProduct (id: number):Observable<IReview[]>
   {
     return this.http.get<IReview[]> (`${this._urlApi}/${id}`).pipe(catchError((error) => {
       return throwError(() => {error.message || "Server Error"})
     }))
-  }
-
-  getReviewsForProduct(productId: string): Observable<IReview[]> {
-    // Make an HTTP GET request to fetch reviews for a specific product ID
-    const url = `${this._urlApi}/?productId=${productId}`;
-    // Assuming your API returns an array of Review objects
-    return this.http.get<IReview[]>(url);
   }
 
 }

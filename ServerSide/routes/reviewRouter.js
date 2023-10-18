@@ -10,7 +10,8 @@ router.route('/ElShopper/api/review')
 
 
 router.route('/ElShopper/api/review/:id?')
-    .get(controller.getReviewById)
+    // .get(controller.getReviewById)
+    .get(controller.reviewsForProduct)
 
 
 module.exports=router;
