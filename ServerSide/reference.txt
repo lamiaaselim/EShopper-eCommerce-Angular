@@ -2,7 +2,7 @@ npm init -y
 npm i express
 npm i morgan
 
-
+set jwtSecretVar=thisissecretkey
 ------------------------------------------------------------------------------------
 **to run server 
 in package.json 
