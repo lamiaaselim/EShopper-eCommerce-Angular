@@ -10,6 +10,16 @@ exports.getAllSizes=(request, response, next)=>{
         });
 } 
 
+exports.getSizeById=(request, response, next)=>{
+    SizeSchema.findOne({sizeId:request.params.id})
+        .then((data) => {
+            if (data == null)
+            throw new Error ("Size dosen't exist")
+            response.status(200).json(data);
+        }).catch((error) => {
+            next(error)
+        });
+}
 
 
 exports.addSize=(request, response, next)=>{

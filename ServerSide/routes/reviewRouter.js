@@ -9,5 +9,8 @@ router.route('/ElShopper/api/review')
     .post( controller.addReview)
 
 
+router.route('/ElShopper/api/review/:id?')
+    .get(controller.getReviewById)
+
 
 module.exports=router;

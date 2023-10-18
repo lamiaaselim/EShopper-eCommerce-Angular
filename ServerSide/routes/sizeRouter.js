@@ -9,5 +9,7 @@ router.route('/ElShopper/api/size')
     .post( controller.addSize)
 
 
+router.route('/ElShopper/api/size/:id?')
+    .get(controller.getSizeById)
 
 module.exports=router;

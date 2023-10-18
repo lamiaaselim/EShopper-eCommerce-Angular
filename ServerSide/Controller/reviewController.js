@@ -9,9 +9,20 @@ exports.getAllReviews=(request, response, next)=>{
         });
 } 
 
+exports.getReviewById=(request, response, next)=>{
+    ReviewSchema.findOne({reviewId:request.params.id})
+        .then((data) => {
+            if (data == null)
+            throw new Error ("Review dosen't exist")
+            response.status(200).json(data);
+        }).catch((error) => {
+            next(error)
+        });
+}
 
 exports.addReview=(request, response, next)=>{
     let newReview = new ReviewSchema({
+        reviewId:request.body.reviewId,
         product: request.body.product ,
         user:request.body.user,
         rating: request.body.rating,

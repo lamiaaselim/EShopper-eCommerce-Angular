@@ -9,5 +9,10 @@ router.route('/ElShopper/api/color')
     .post( controller.addColor)
 
 
+router.route('/ElShopper/api/color/:id?')
+    .get(controller.getColorById)
+
+
+
 
 module.exports=router;
