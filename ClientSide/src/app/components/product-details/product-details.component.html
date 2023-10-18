@@ -23,17 +23,20 @@
                       <small class="fas fa-star-half-alt"></small>
                       <small class="far fa-star"></small>
                   </div>
-                  <small class="pt-1">(50 Reviews)</small>
+                  <div  *ngFor="let review of reviews">
+                    <small class="pt-1" *ngIf="review.product === productOfId._id"> {{review.product}}</small>
+                    <small class="pt-1"> (Reviews)</small>
+                  </div>
               </div>
-              <h3 class="font-weight-semi-bold mb-4">{{productOfId.price}}</h3>
+              <h3 class="font-weight-semi-bold mb-4">{{productOfId.name}}</h3>
               <p class="mb-4">{{productOfId.description}}</p>
               <!-- //sizes of product -->
               <div class="d-flex mb-3">
                   <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                   <form>
-                      <div *ngFor="let sizeId of productOfId.sizes" class="custom-control custom-radio custom-control-inline">
+                      <div class="custom-control custom-radio custom-control-inline">
                           <input type="radio" class="custom-control-input" id="size-1" name="size">
-                          <label class="custom-control-label" for="size-1">{{ productOfId.sizes.name }}</label>
+                          <label class="custom-control-label" for="size-1">XL</label>
                       </div>
                   </form>
               </div>
