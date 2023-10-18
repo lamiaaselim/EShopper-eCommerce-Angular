@@ -22,7 +22,7 @@ server.use(cors());
 
 const port = process.env.PORT || 8080;
 
-mongoose.connect("mongodb://127.0.0.1:27017/ElShopper")
+mongoose.connect("mongodb+srv://ElShopper:ElShopper@cluster0.6nwdzcz.mongodb.net/")
     .then(() => {
         console.log("DB connection established")
         server.listen(port, ()=>{
