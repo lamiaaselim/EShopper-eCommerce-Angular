@@ -11,6 +11,8 @@ import { SizeService } from './../../services/size.service';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
+  counterQuantity: number = 1;
+  isDisabled: boolean = false;
   products:any= [];
   productOfId: any;
   colorOfId: any;
@@ -23,12 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   productID: any ;
   constructor(private ProductService: ProductService,
               private activatedRoute: ActivatedRoute,
-              private ReviewService: ReviewService,
-              private ColorService: ColorService,
-              private SizeService: SizeService)
-  {
-
-  }
+              private ReviewService: ReviewService,) {}
 
   ngOnInit(): void {
     this.productID=this.activatedRoute.snapshot.paramMap.get("id");
@@ -51,17 +48,18 @@ export class ProductDetailsComponent implements OnInit {
     })
 
 
-    this.ColorService.getColorById(this.productOfId).subscribe({
-      next: data => this.colorOfId = data,
-      error: err => this.errMsg = err
-    })
-
-    this.SizeService.getSizeById(this.productOfId).subscribe({
-      next: data => this.sizeOfId = data,
-      error: err => this.errMsg = err
-    })
-
   }
-
+  increaseQuantity(){
+    this.counterQuantity++;
+    this.isDisabled = false;
+  }
+  decreaseQuantity() {
+    if (this.counterQuantity > 1) {
+      this.counterQuantity--;
+    } else {
+      this.counterQuantity = 1;
+      this.isDisabled = true;
+    }
+  }
 
 }

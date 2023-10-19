@@ -8,4 +8,4 @@ const SizeSchema = new mongoose.Schema({
 }); 
 
 //Collection
-module.exports=mongoose.model('size', SizeSchema);
+module.exports=mongoose.model('Size', SizeSchema);

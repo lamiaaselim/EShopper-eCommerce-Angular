@@ -11,6 +11,8 @@ exports.getAllProduct=(request, response, next)=>{
 
 exports.getProductById=(request, response, next)=>{
     ProductSchema.findOne({productId:request.params.id})
+        .populate('sizes')
+        .populate('colors')
         .then((data) => {
             if (data == null)
             throw new Error ("Product dosen't exist")

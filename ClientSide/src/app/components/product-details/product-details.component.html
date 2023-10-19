@@ -1,72 +1,72 @@
-    <!-- Shop Detail Start -->
-    <div class="container-fluid py-5">
-      <div class="row px-xl-5" *ngIf="productOfId">
-        <!-- //image of product -->
-          <div class="col-lg-5 pb-5">
-              <div id="product-carousel" class="carousel slide" data-ride="carousel">
-                  <div class="carousel-inner border">
-                      <div class="carousel-item active">
-                          <img class="w-100 h-100" src="../../assets/images/product-1.jpg" alt="Image">
-                      </div>
-                  </div>
-              </div>
+<!-- Shop Detail Start -->
+<div class="container-fluid py-5">
+  <div class="row px-xl-5" *ngIf="productOfId">
+    <!-- //image of product -->
+    <div class="col-lg-5 pb-5">
+      <div id="product-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner border">
+          <div class="carousel-item active">
+            <img class="w-100 h-100" src="../../assets/images/product-1.jpg" alt="Image">
           </div>
-        <!-- //details of product -->
-          <div class="col-lg-7 pb-5">
-              <h3 class="font-weight-semi-bold">{{productOfId.name}}</h3>
-        <!-- //rating of product -->
-              <div class="d-flex mb-3">
-                  <div class="text-primary mr-2">
-                      <small class="fas fa-star"></small>
-                      <small class="fas fa-star"></small>
-                      <small class="fas fa-star"></small>
-                      <small class="fas fa-star-half-alt"></small>
-                      <small class="far fa-star"></small>
-                  </div>
-                    <small class="pt-1" *ngIf="reviewOfId"> {{reviewOfId.data.length}}</small>
-                    <small class="pt-1"> (Reviews)</small>
-              </div>
-              <h3 class="font-weight-semi-bold mb-4">{{productOfId.name}}</h3>
-              <p class="mb-4">{{productOfId.description}}</p>
-              <!-- //sizes of product -->
-              <div class="d-flex mb-3">
-                  <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
-                  <form>
-                      <div class="custom-control custom-radio custom-control-inline">
-                          <input type="radio" class="custom-control-input" id="size-1" name="size">
-                          <label class="custom-control-label" for="size-1">XL</label>
-                      </div>
-                  </form>
-              </div>
-              <!-- //colors of product -->
-              <div class="d-flex mb-4">
-                  <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
-                  <form>
-                      <div *ngFor="let colorId of productOfId.colors" class="custom-control custom-radio custom-control-inline">
-                          <input type="radio" class="custom-control-input" id="color-1" name="color">
-                          <label class="custom-control-label" for="color-1">{{ productOfId.colors.name }}</label>
-                      </div>
-                  </form>
-              </div>
-              <!-- choice quantity -->
-              <div class="d-flex justify-content-evenly align-items-center mb-4 pt-2">
-                  <div class="input-group quantity mr-3" style="width: 130px;">
-                      <div class="input-group-btn">
-                          <button class="btn btn-primary btn-minus" >
-                          <i class="fa fa-minus"></i>
-                          </button>
-                      </div>
-                      <input type="text" class="form-control bg-secondary text-center" value="1">
-                      <div class="input-group-btn">
-                          <button class="btn btn-primary btn-plus">
-                              <i class="fa fa-plus"></i>
-                          </button>
-                      </div>
-                  </div>
-                  <a class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</a>
-              </div>
-          </div>
+        </div>
       </div>
-
+    </div>
+    <!-- //details of product -->
+    <div class="col-lg-7 pb-5">
+      <h3 class="font-weight-semi-bold">{{productOfId.name}}</h3>
+      <!-- //rating of product -->
+      <div class="d-flex mb-3">
+        <div class="text-primary mr-2">
+          <small class="fas fa-star"></small>
+          <small class="fas fa-star"></small>
+          <small class="fas fa-star"></small>
+          <small class="fas fa-star-half-alt"></small>
+          <small class="far fa-star"></small>
+        </div>
+        <small class="pt-1" *ngIf="reviewOfId"> {{reviewOfId.data.length}}</small>
+        <small class="pt-1"> (Reviews)</small>
+      </div>
+      <h3 class="font-weight-semi-bold mb-4">{{productOfId.name}}</h3>
+      <p class="mb-4">{{productOfId.description}}</p>
+      <!-- //sizes of product -->
+      <div class="d-flex mb-3">
+        <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
+        <form>
+          <div class="custom-control custom-radio custom-control-inline" *ngFor="let size of productOfId.sizes">
+            <input type="radio" class="custom-control-input" id="size-1" name="size">
+            <label class="custom-control-label" for="size-1">{{size.name}}</label>
+          </div>
+        </form>
+      </div>
+      <!-- //colors of product -->
+      <div class="d-flex mb-4">
+        <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
+        <form>
+          <div class="custom-control custom-radio custom-control-inline"  *ngFor="let color of productOfId.colors">
+            <input type="radio" class="custom-control-input" id="color-1" name="color">
+            <label class="custom-control-label" for="color-1">{{color.name}}</label>
+          </div>
+        </form>
+      </div>
+      <!-- choice quantity -->
+      <div class="d-flex justify-content-evenly align-items-center mb-4 pt-2">
+        <div class="input-group quantity mr-3" style="width: 130px;">
+          <div class="input-group-btn">
+            <button class="btn btn-primary btn-minus" [disabled]="isDisabled" (click)="decreaseQuantity()">
+              <i class="fa fa-minus"></i>
+            </button>
+          </div>
+          <input type="text" class="form-control bg-secondary text-center" [(ngModel)]="counterQuantity">
+          <div class="input-group-btn">
+            <button class="btn btn-primary btn-plus" (click)="increaseQuantity()">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <a class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</a>
+      </div>
+    </div>
   </div>
-  <!-- Shop Detail End -->
+
+</div>
+<!-- Shop Detail End -->
