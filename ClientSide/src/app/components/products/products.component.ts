@@ -19,8 +19,8 @@ export class ProductsComponent  implements OnInit {
       next: data => this.products = data,
       error: err => this.errMsg = err
     })
-
   }
+
   goToProductDetails(id: any){
     // go to productDetails Page and pass the id
     this.router.navigate(['product', id])

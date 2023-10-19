@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema({
     image: { type: String, },
     price: { type: Number, required: true },
     oldPrice: { type: Number, required: true },
-    category: { type: String, enum: ['men', 'women', 'children'], required: true },
+    category: { type: String, enum: ['men', 'women', 'children', 'accessories', 'shoes', 'bags'], required: true },
     colors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Color' }],
     sizes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Size' }],
 }); 
