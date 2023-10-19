@@ -15,6 +15,9 @@ router.route('/ElShopper/api/product/:id?')
     .get(controller.getProductById)
     .delete(auth,controller.deleteProduct)
 
+router.route('/ElShopper/api/product/sizes:size?')
+    .get(controller.getSizesForProduct)
+
 
 
 module.exports=router;
