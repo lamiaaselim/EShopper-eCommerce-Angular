@@ -8,7 +8,7 @@ import { IReview } from './../interfaces/IReview';
   providedIn: 'root'
 })
 export class ReviewService {
-  _urlApi = "http://localhost:8080/ElShopper/api/review"
+  _urlApi = "https://e-shopper-pvok.onrender.com/ElShopper/api/review"
 
   constructor(private http:HttpClient) { }
 

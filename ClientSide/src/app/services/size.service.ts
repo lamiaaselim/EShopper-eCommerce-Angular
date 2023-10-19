@@ -9,7 +9,7 @@ import { ISize } from './../interfaces/ISize';
 })
 export class SizeService {
 
-  _urlApi = "http://localhost:8080/ElShopper/api/size"
+  _urlApi = "https://e-shopper-pvok.onrender.com/api/size"
 
   constructor(private http:HttpClient) { }
 

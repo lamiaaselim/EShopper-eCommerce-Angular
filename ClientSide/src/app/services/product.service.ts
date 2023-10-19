@@ -8,7 +8,7 @@ import { IProduct } from '../interfaces/IProduct';
   providedIn: 'root'
 })
 export class ProductService {
-  _urlApi = "http://localhost:8080/ElShopper/api/product"
+  _urlApi = "https://e-shopper-pvok.onrender.com/ElShopper/api/product"
 
 
   constructor(private http:HttpClient) { }

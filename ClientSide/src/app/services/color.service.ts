@@ -9,7 +9,7 @@ import { IColor } from '../interfaces/IColor';
 })
 export class ColorService {
 
-  _urlApi = "http://localhost:8080/ElShopper/api/color"
+  _urlApi = "https://e-shopper-pvok.onrender.com/ElShopper/api/color"
 
   constructor(private http:HttpClient) { }
 
