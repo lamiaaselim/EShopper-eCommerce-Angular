@@ -9,21 +9,6 @@ exports.getAllProduct=(request, response, next)=>{
         });
 } 
 
-<<<<<<< HEAD
-exports.getProductById=(request, response, next)=>{
-    ProductSchema.findOne({productId:request.params.id})
-        .populate('sizes')
-        .populate('colors')
-        .then((data) => {
-            if (data == null)
-            throw new Error ("Product dosen't exist")
-            response.status(200).json(data);
-        }).catch((error) => {
-            next(error)
-        });
-}
-=======
->>>>>>> 92267dff0a069b2d52f38dbd5a2de2b2ae0fb9fc
 
 exports.addProduct=(request, response, next)=>{
     let newProduct = new ProductSchema({
@@ -82,6 +67,8 @@ exports.deleteProduct = (request, response, next) => {
 
 exports.getProductById=(request, response, next)=>{
     ProductSchema.findOne({productId:request.params.id})
+        .populate('sizes')
+        .populate('colors')
         .then((data) => {
             if (data == null)
             throw new Error ("Product dosen't exist")
@@ -91,13 +78,4 @@ exports.getProductById=(request, response, next)=>{
         });
 }
 
-exports.getSizesForProduct=(request, response, next)=>{
-    ProductSchema.find({sizes:request.params.size})
-    .exec()
-    .then((sizesProduct) => {
-        response.status(200).json({ data: sizesProduct });
-    }).catch((error) => {
-            next(error)
-        });
-}
 
