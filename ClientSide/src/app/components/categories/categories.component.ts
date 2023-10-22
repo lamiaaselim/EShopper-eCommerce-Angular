@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
+import { CategoriesService } from './../../services/categories.service';
 
 @Component({
   selector: 'app-categories',
@@ -9,25 +9,15 @@ import { Router } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit{
 
-  products: any = [];
-  uniqueCategories: string[] = [];
+  categories: any = [];
   errMsg: any = '';
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(private CategoriesService: CategoriesService, private router: Router) {}
 
   ngOnInit(): void {
-    this.productService.getAllProduct().subscribe({
-      next: data => {
-        this.products = data;
-        this.uniqueCategories = this.getUniqueCategories(data);
-      },
+    this.CategoriesService.getAllCategories().subscribe({
+      next: data => this.categories = data,
       error: err => this.errMsg = err
-    });
-  }
-
-  getUniqueCategories(products: any[]): string[] {
-    // Extract unique categories
-    const categories = Array.from(new Set(products.map(product => product.category)));
-    return categories;
+    })
   }
 }

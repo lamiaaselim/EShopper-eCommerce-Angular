@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent  implements OnInit {
+export class ProductsComponent implements OnInit {
 
   products:any= [];
   errMsg: any = '';
