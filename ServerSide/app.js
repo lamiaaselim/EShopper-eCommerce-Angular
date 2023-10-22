@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors'); // Import the 'cors' module
 const bodyParser = require('body-parser');
 
+const categorRouter =require('./routes/categoryRouter');
 const productRouter =require('./routes/productRouter');
 const colorRouter =require('./routes/colorRouter');
 const sizeRouter =require('./routes/sizeRouter');
@@ -41,6 +42,7 @@ server.use((request, response, next)=>{
 /* -----------------Routes ----------------- */ 
 server.use(express.json());
 
+server.use(categorRouter);
 server.use(productRouter);
 server.use(colorRouter);
 server.use(sizeRouter);
