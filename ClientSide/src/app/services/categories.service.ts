@@ -18,4 +18,10 @@ export class CategoriesService {
       return throwError(() => {error.message || "Server Error"})
     }))
   }
+  getCategoryByName (name: string):Observable<ICategory[]>
+  {
+    return this.http.get<ICategory[]> (`${this._urlApi}/${name}`).pipe(catchError((error) => {
+      return throwError(() => {error.message || "Server Error"})
+    }))
+  }
 }

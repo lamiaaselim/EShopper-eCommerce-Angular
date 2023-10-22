@@ -9,7 +9,6 @@ exports.getAllProduct=(request, response, next)=>{
         });
 } 
 
-
 exports.addProduct=(request, response, next)=>{
     let newProduct = new ProductSchema({
         // _id:request.body.id,
@@ -19,7 +18,7 @@ exports.addProduct=(request, response, next)=>{
         image: request.body.image,
         price: request.body.price,
         oldPrice: request.body.price,
-        category: request.body.category,
+        categoryName: request.body.categoryName,
         colors: request.body.colors, 
         sizes: request.body.sizes,
     });
@@ -64,11 +63,11 @@ exports.deleteProduct = (request, response, next) => {
         });
 };
 
-
 exports.getProductById=(request, response, next)=>{
     ProductSchema.findOne({productId:request.params.id})
         .populate('sizes')
         .populate('colors')
+        .populate('categoryName')
         .then((data) => {
             if (data == null)
             throw new Error ("Product dosen't exist")

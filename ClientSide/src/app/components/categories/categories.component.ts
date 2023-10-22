@@ -11,7 +11,6 @@ export class CategoriesComponent implements OnInit{
 
   categories: any = [];
   errMsg: any = '';
-
   constructor(private CategoriesService: CategoriesService, private router: Router) {}
 
   ngOnInit(): void {
@@ -19,5 +18,10 @@ export class CategoriesComponent implements OnInit{
       next: data => this.categories = data,
       error: err => this.errMsg = err
     })
+  }
+
+  selectCategory(category: any){
+    // go to products Page and pass the category
+    this.router.navigate(['products', category.categoryName])
   }
 }

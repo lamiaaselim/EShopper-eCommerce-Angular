@@ -9,11 +9,13 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent },
   {path: "home", component: HomeComponent },
   {path: "categories", component: CategoriesComponent },
+  {path: "products", component: ProductsComponent },
   { path: "login", component: LogInComponent },
   { path: "signup", component: SignUpComponent },
   { path: "shop", component: ShopComponent },
