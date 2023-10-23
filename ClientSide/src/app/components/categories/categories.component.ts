@@ -22,6 +22,6 @@ export class CategoriesComponent implements OnInit{
 
   selectCategory(category: any){
     // go to products Page and pass the category
-    this.router.navigate(['products', category.categoryName])
+    this.router.navigate(['categories', category])
   }
 }

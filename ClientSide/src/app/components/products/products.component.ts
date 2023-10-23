@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
 
+  selectedValue: any ;
   products:any= [];
   errMsg: any = '';
 
@@ -17,8 +18,10 @@ export class ProductsComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
+    this.selectedValue=this.activatedRoute.snapshot.paramMap.get("name");
+    console.log(this.selectedValue)
     this.ProductService.getAllProduct().subscribe({
-      next: data => this.products = data,
+      next: data => {this.products = data.filter(product => product.categoryName === this.selectedValue)},
       error: err => this.errMsg = err
     })
 
