@@ -19,7 +19,6 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedValue=this.activatedRoute.snapshot.paramMap.get("name");
-    console.log(this.selectedValue)
     this.ProductService.getAllProduct().subscribe({
       next: data => {this.products = data.filter(product => product.categoryName === this.selectedValue)},
       error: err => this.errMsg = err

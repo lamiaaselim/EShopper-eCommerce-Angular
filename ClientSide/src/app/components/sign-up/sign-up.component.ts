@@ -1,5 +1,5 @@
 import { Component , OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators,  AbstractControl, ValidatorFn, } from '@angular/forms';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit{
     phone: ['', [Validators.required, Validators.minLength(11)]] ,
     email: ['', [Validators.required , Validators.pattern(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)]],
     password: ['', [Validators.required, Validators.minLength(5)]] ,
-    confirmPassword: ['', [Validators.required,]] ,
+    confirmPassword: ['', [Validators.required, Validators.pattern(this.passwordInput)]] ,
   });
 
   constructor (private fb: FormBuilder) {}
@@ -40,6 +40,7 @@ export class SignUpComponent implements OnInit{
     return this.SignUpForm.get('confirmPassword');
   }
 
+
   machedPassword(){
     let HasError = '';
     const passwordInput  = this.SignUpForm.get('password');
@@ -47,6 +48,7 @@ export class SignUpComponent implements OnInit{
     if (passwordInput === confirmPasswordInput) {
       HasError = '';
     } HasError =  "Confirm password must match password";
-
   }
+
+
 }

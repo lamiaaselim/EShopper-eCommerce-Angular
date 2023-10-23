@@ -76,16 +76,3 @@ exports.getProductById=(request, response, next)=>{
             next(error)
         });
 }
-
-
-// exports.getProductsByCategory = (request, response, next) => {
-//     const categoryName = request.params.categoryName; 
-
-//     ProductSchema.find({ categoryName: categoryName })
-//         .then((data) => {
-//             response.status(200).json(data);
-//         })
-//         .catch((error) => {
-//             next(error);
-//         });
-// }
