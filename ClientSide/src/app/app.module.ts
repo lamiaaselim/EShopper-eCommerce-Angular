@@ -32,6 +32,10 @@ import { HttpClientModule } from '@angular/common/http';
 // Reactive forms
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { CheckOutComponent } from './components/check-out/check-out.component';
+import { EditComponent } from './components/dashboard/edit/edit.component';
+import { AddComponent } from './components/dashboard/add/add.component';
+import { VeiwComponent } from './components/dashboard/veiw/veiw.component';
 
 
 @NgModule({
@@ -56,7 +60,11 @@ import { FormsModule } from '@angular/forms';
     AdminComponent,
     HomeComponent,
     NotFoundComponent,
-    NavComponent
+    NavComponent,
+    CheckOutComponent,
+    EditComponent,
+    AddComponent,
+    VeiwComponent
   ],
   imports: [
     BrowserModule,
