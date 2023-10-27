@@ -1,16 +1,14 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { ReviewService } from './../../services/review.service';
-import { ColorService } from './../../services/color.service';
-import { SizeService } from './../../services/size.service';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnChanges {
   counterQuantity: number = 1;
   isDisabled: boolean = false;
   products:any= [];
@@ -26,6 +24,10 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private ProductService: ProductService,
               private activatedRoute: ActivatedRoute,
               private ReviewService: ReviewService,) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    throw new Error('Method not implemented.');
+  }
 
   ngOnInit(): void {
     this.productID=this.activatedRoute.snapshot.paramMap.get("id");

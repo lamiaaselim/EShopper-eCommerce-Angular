@@ -1,21 +1,19 @@
 <!-- Shop Detail Start -->
-<div class="container-fluid py-5">
-  <div class="row px-xl-5" *ngIf="productOfId">
+<section class="container py-5">
+  <div class="row d-flex justify-content-evenly" *ngIf="productOfId">
     <!-- //image of product -->
-    <div class="col-lg-5 pb-5">
-      <div id="product-carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner border">
-          <div class="carousel-item active">
-            <img class="w-100 h-100" [src]="'../../assets/images/product/' + productOfId.image + '.jpg'" alt={{productOfId.name}}>
+    <div class="col-lg-4 col-md-6 my-3">
+        <div class="card">
+          <div class="card-img">
+            <img class="img-fluid" [src]="'../../assets/images/product/' + productOfId.image + '.jpg'" alt={{productOfId.name}}>
           </div>
         </div>
-      </div>
     </div>
     <!-- //details of product -->
-    <div class="col-lg-7 pb-5">
-      <h3 class="font-weight-semi-bold">{{productOfId.name}}</h3>
+    <div class="col-lg-4 col-md-6 my-3 ms-2">
+      <h3 class="font-weight-semi-bold"> {{productOfId.name}} </h3>
       <!-- //rating of product -->
-      <div class="d-flex mb-3">
+      <div class="d-flex mb-4">
         <div class="text-primary mr-2">
           <small class="fas fa-star"></small>
           <small class="fas fa-star"></small>
@@ -26,7 +24,7 @@
         <small class="pt-1" *ngIf="reviewOfId"> {{reviewOfId.data.length}}</small>
         <small class="pt-1"> (Reviews)</small>
       </div>
-      <h3 class="font-weight-semi-bold mb-4">{{productOfId.name}}</h3>
+      <h3 class="font-weight-semi-bold mb-1"> {{productOfId.categoryName}}</h3>
       <p class="mb-4">{{productOfId.description}}</p>
       <!-- //sizes of product -->
       <div class="d-flex mb-3">
@@ -39,7 +37,7 @@
         </form>
       </div>
       <!-- //colors of product -->
-      <div class="d-flex mb-4">
+      <div class="d-flex mb-5">
         <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
         <form>
           <div class="custom-control custom-radio custom-control-inline"  *ngFor="let color of productOfId.colors">
@@ -48,25 +46,30 @@
           </div>
         </form>
       </div>
-      <!-- choice quantity -->
-      <div class="d-flex justify-content-evenly align-items-center mb-4 pt-2">
-        <div class="input-group quantity mr-3" style="width: 130px;">
-          <div class="input-group-btn">
-            <button class="btn btn-primary btn-minus" [disabled]="isDisabled" (click)="decreaseQuantity()">
-              <i class="fa fa-minus"></i>
-            </button>
-          </div>
-          <input type="text" class="form-control bg-secondary text-center" [(ngModel)]="counterQuantity">
-          <div class="input-group-btn">
-            <button class="btn btn-primary btn-plus" (click)="increaseQuantity()">
-              <i class="fa fa-plus"></i>
-            </button>
-          </div>
-        </div>
+      <!-- Click to add to Cart  -->
+      <div class="d-flex mb-5">
         <a class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</a>
       </div>
     </div>
+    <!-- Review about this product  -->
+    <div class="col-lg-4 col-md-12 my-3">
+      <table id="mytable" class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+          <tr class="header-row">
+            <th>Client Reviews</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ahmed Ali</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-</div>
+</section>
 <!-- Shop Detail End -->
