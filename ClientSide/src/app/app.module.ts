@@ -24,6 +24,10 @@ import { AdminComponent } from './components/dashboard/admin/admin.component';
 import { HomeComponent } from './components/home/home.component'
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavComponent } from './components/nav/nav.component';
+import { CheckOutComponent } from './components/check-out/check-out.component';
+import { EditComponent } from './components/dashboard/edit/edit.component';
+import { AddComponent } from './components/dashboard/add/add.component';
+import { VeiwComponent } from './components/dashboard/veiw/veiw.component';
 //Sign-up
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -32,11 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
 // Reactive forms
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { CheckOutComponent } from './components/check-out/check-out.component';
-import { EditComponent } from './components/dashboard/edit/edit.component';
-import { AddComponent } from './components/dashboard/add/add.component';
-import { VeiwComponent } from './components/dashboard/veiw/veiw.component';
-
+// NgxPaginationModule
+import { NgxPaginationModule } from 'ngx-pagination';
+// herw
 
 @NgModule({
   declarations: [
@@ -75,6 +77,7 @@ import { VeiwComponent } from './components/dashboard/veiw/veiw.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule,
 
   ],
   exports: [MatButtonModule, MatStepperModule],

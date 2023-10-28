@@ -21,6 +21,13 @@ export class ProductService {
     }))
   }
 
+  fetchAllProduct (page: number):Observable<IProduct[]>
+  {
+    return this.http.get<IProduct[]> (this._urlApi + '?page' + page).pipe(catchError((error) => {
+      return throwError(() => {error.message || "Server Error"})
+    }))
+  }
+
   getProductById (id: number):Observable<IProduct[]>
   {
     return this.http.get<IProduct[]> (`${this._urlApi}/${id}`).pipe(catchError((error) => {

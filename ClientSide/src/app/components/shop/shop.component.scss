@@ -1,3 +1,18 @@
 img {
   height: 350px;
 }
+app-shop {
+  overflow: hidden;
+}
+* {
+  overflow: hidden;
+}
+
+pagination-controls{
+  font-style: italic;
+  color: black;
+}
+
+pagination-controls li {
+  background-color: aqua;
+}

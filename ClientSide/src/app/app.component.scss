@@ -4,6 +4,7 @@ body {
   padding: 0;
 }
 
+// Start nice Scrollbar
 .custom-scrollbar-container {
   height: 100vh; /* Set the height to fill the entire screen */
   overflow: auto;
@@ -26,3 +27,5 @@ body {
 .custom-scrollbar-container::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+// End nice Scrollbar
