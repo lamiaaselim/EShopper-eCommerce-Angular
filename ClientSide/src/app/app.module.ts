@@ -38,7 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 // NgxPaginationModule
 import { NgxPaginationModule } from 'ngx-pagination';
-// herw
+
 
 @NgModule({
   declarations: [
@@ -78,7 +78,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
-
+    // Ng2SearchPipeModule,
   ],
   exports: [MatButtonModule, MatStepperModule],
   providers: [],
