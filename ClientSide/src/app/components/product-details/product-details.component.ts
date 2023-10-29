@@ -2,6 +2,7 @@ import { Component , OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { ReviewService } from './../../services/review.service';
+import { ShoppingCartService } from './../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -21,7 +22,9 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   sizeOfId: any;
   errMsg: any = '';
   productID: any ;
+
   constructor(private ProductService: ProductService,
+    private ShoppingCartService: ShoppingCartService,
               private activatedRoute: ActivatedRoute,
               private ReviewService: ReviewService,) {}
 
@@ -48,7 +51,6 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
       next: data => this.reviews = data,
       error: err => this.errMsg = err
     })
-
 
   }
   increaseQuantity(){

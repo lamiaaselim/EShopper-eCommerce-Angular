@@ -3,6 +3,10 @@ const CartSchema = require('./../Model/cartModel');
 
 exports.getAllCartItems=(request, response, next)=>{
     CartSchema.find({})
+        .populate('user')
+        .populate('items.product')
+        .populate('items.color')
+        .populate('items.size')
         .then((data) => {
             response.status(200).json(data);
         }).catch((error) => {

@@ -1,4 +1,5 @@
 import { Component , OnInit} from '@angular/core';
+import { ShoppingCartService } from './../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,10 +11,16 @@ export class ShoppingCartComponent implements OnInit {
 
   counterQuantity: number = 1;
   isDisabled: boolean = false;
+  cartItems: any = [];
+  errMsg: any = '';
+  constructor (private ShoppingCartService: ShoppingCartService, ) {}
 
-  constructor ( ) {}
-
-  ngOnInit() : void{}
+  ngOnInit() : void{
+    this.ShoppingCartService.getAllCartItems().subscribe({
+      next: data => this.cartItems = data,
+      error: err => this.errMsg = err
+    })
+  }
 
   increaseQuantity(){
     this.counterQuantity++;

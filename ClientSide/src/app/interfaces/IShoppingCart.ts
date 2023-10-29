@@ -1,6 +1,6 @@
 export interface IShoppingCartItem {
   productId: number; // You can use the appropriate type for product IDs.
-  name: string;
+  product: string;
   price: number;
   quantity: number;
   size: string;
